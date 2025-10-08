@@ -3,9 +3,12 @@ CPPFLAGS := -Wall -Werror -Wextra -std=c++98
 RM := rm -fr
 
 SRC :=	main.cpp \
-		Fixed.cpp
+		Fixed.cpp \
+		Point.cpp \
+		bsp.cpp
 
-HEADERS := Fixed.hpp
+HEADERS := 	Fixed.hpp \
+			Point.hpp
 
 OBJDIR = objs
 OBJ = $(SRC:%.cpp=$(OBJDIR)/%.o)

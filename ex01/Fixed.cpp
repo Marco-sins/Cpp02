@@ -6,7 +6,7 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:47:10 by marco             #+#    #+#             */
-/*   Updated: 2025/10/01 14:06:34 by marco            ###   ########.fr       */
+/*   Updated: 2025/10/06 10:22:45 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Fixed::Fixed()
     this->_value = 0;
 }
 
-Fixed::Fixed(Fixed &fixed)
+Fixed::Fixed(Fixed const &fixed)
 {
     std::cout << "Copy constructor called" << std::endl;
     this->_value = fixed.getRawBits();
@@ -51,13 +51,13 @@ Fixed &Fixed::operator=(const Fixed &fixed)
 Fixed::Fixed(const int value)
 {
     std::cout << "Int constructor called" << std::endl;
-    this->_value = value << _fractionalBits
+    this->_value = value << this->_fractionalBits;
 }
 
 Fixed::Fixed(const float value)
 {
     std::cout << "Float constuctor called" << std::endl;
-    this->_value = roundf(this->_value * (1 << this->_fractionalBits));
+    this->_value = roundf(value * (1 << this->_fractionalBits));
 }
 
 int Fixed::toInt(void) const
@@ -70,3 +70,8 @@ float Fixed::toFloat(void) const
     return ((float)(this->_value / (float)(1 << this->_fractionalBits)));
 }
 
+std::ostream &operator<<(std::ostream &os, const Fixed &copy)
+{
+    os << copy.toFloat();
+    return (os);
+}
