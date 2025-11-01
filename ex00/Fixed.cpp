@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mmembril <mmembril@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:17:46 by marco             #+#    #+#             */
-/*   Updated: 2025/10/01 13:27:31 by marco            ###   ########.fr       */
+/*   Updated: 2025/10/21 14:37:56 by mmembril         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Fixed::Fixed(Fixed &fixed)
 
 Fixed::~Fixed()
 {
-    std::cout << "Default destructor called" << std::endl;
+    std::cout << "Destructor called" << std::endl;
 }
 
 int Fixed::getRawBits() const 
@@ -43,7 +43,7 @@ void Fixed::setRawBits(int const rawBits)
 
 Fixed &Fixed::operator=(const Fixed &fixed)
 {
-    std::cout << "Asignation operator called" << std::endl;
+    std::cout << "Copy assignment operator called" << std::endl;
     _value = fixed.getRawBits();
     return *this;
 }

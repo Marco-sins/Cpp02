@@ -7,23 +7,23 @@ SRC :=	main.cpp \
 
 HEADERS := Fixed.hpp
 
-OBJ = $(SRC:.cpp=.o)
-OBJS_DIR := objs
+OBJDIR := objs
+OBJ = $(SRC:%.cpp=$(OBJDIR)/%.o)
 
 NAME := fixed
 
 all: $(NAME)
 
-$(OBJDIR)/%.o: %.c $(HEADERS)
+$(OBJDIR)/%.o: %.cpp $(HEADERS)
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 
 $(NAME): $(OBJ)
 	$(CPP) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJDIR)
 
 fclean: clean
 	$(RM) $(NAME)
